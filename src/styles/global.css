@@ -1,0 +1,17 @@
+html {
+    background-color: #0a192f;
+    cursor: url('../../static/cursor.png'), auto;	
+}
+
+h1 {
+  color: #04cea5;
+}
+
+p {
+  color: white;
+}
+
+a {
+  color: #04cea5;
+  text-shadow: none;
+}
