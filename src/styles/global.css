@@ -15,3 +15,9 @@ a {
   color: #04cea5;
   text-shadow: none;
 }
+
+/* svg {
+  fill: none;
+  transition: var(--transition);
+  user-select: none;
+} */
