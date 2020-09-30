@@ -1,7 +1,10 @@
 import React from "react"
 import Navbar from "./navbar"
 import useWindowWidth from "./windowWidth"
-import { GlobalStyle } from "../styles/index"
+import { ThemeProvider } from "styled-components"
+import { GlobalStyle } from "../styles/globalStyle"
+import { SiteMetadata } from "./site-metadata"
+import { theme } from "../theme"
 
 export default function Layout({ children }) {
   const windowWidth = useWindowWidth()
@@ -11,13 +14,16 @@ export default function Layout({ children }) {
   }
 
   return (
-    <>
-      {/* Tells the entire project which classes to use */}
-      <GlobalStyle />
-      <div id="main" className="container">
-        <Navbar windowWidth={windowWidth}></Navbar>
-        <div className="content">{children}</div>
-      </div>
-    </>
+    <ThemeProvider theme={theme}>
+      <>
+        {/* Tells the entire project which classes to use */}
+        <SiteMetadata />
+        <GlobalStyle />
+        <div id="main" className="container">
+          <Navbar windowWidth={windowWidth}></Navbar>
+          <div className="content">{children}</div>
+        </div>
+      </>
+    </ThemeProvider>
   )
 }

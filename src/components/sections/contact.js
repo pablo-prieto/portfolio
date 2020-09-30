@@ -8,7 +8,7 @@ const StyledContactSection = styled.section``
 export default function Contact() {
   return (
     <StyledContactSection>
-      <div id="contact" style={{ color: `teal` }}>
+      <div id="contact">
         {/* <Link to="/">Home</Link> */}
         <Header headerText="Contact" />
         <h1>I'd love to talk! Email me at the address below</h1>

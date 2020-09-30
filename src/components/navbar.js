@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useState, useRef } from 'react';
+import { useOnClickOutside } from '../hooks/burger-menu-hook';
 import { Link } from "gatsby"
 import logo from "../../static/letterPNew3.png"
+import { Burger, Menu } from "./index"
 
 const ListLink = props => (
   <li style={{ display: `inline-block`, marginRight: `1rem` }}>
@@ -9,6 +11,10 @@ const ListLink = props => (
 )
 
 export default function Navbar(props) {
+  const [open, setOpen] = useState(false);
+  const node = useRef();
+  useOnClickOutside(node, () => setOpen(false));
+
   return (
     <div className="row">
       <div>
@@ -18,9 +24,12 @@ export default function Navbar(props) {
       </div>
       <div>
         {props.windowWidth < "768" ? (
-          <div>Random</div>
+          <div ref={node}>
+            <Burger open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
+          </div>
         ) : (
-          <ul style={{ listStyle: `none`, width: `100%`, paddingTop: "15px" }}>
+          <ul>
             <ListLink to="/">Home</ListLink>
             <ListLink to="/#about">About</ListLink>
             <ListLink to="/#projects">Projects</ListLink>

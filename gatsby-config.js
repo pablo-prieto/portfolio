@@ -1,3 +1,5 @@
+const config = require('./src/config');
+
 module.exports = {
   siteMetadata: {
     title: 'Pablo Prieto',
@@ -12,6 +14,19 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'PabloPrieto',
+        short_name: 'PabloPrieto',
+        start_url: '/',
+        background_color: config.colors.darkNavy,
+        theme_color: config.colors.navy,
+        display: 'minimal-ui',
+        icon: 'static/LetterPNew3.png',
       },
     }
   ],

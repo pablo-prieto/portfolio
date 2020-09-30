@@ -1,20 +1,32 @@
 import { createGlobalStyle } from "styled-components"
+import * as cursor from "../../static/cursor-green.png"
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 
-  .container {
-    padding-left: 50px;
-    padding-right: 50px;
+  body {
+    background: ${({ theme }) => theme.primaryDark};
+    color: ${({ theme }) => theme.primaryLight};
+    cursor: url(${cursor}), auto;
+    overflow-x: hidden;
+
+    &.blur {
+      overflow: hidden;
+
+      header {
+        background-color: transparent;
+      }
+
+      #content > * {
+        filter: blur(5px) brightness(0.7);
+        transition: var(--transition);
+        pointer-events: none;
+        user-select: none;
+      }
+    }
   }
 
-  .intro {
-    margin-top: 300px;
-    margin-bottom: 600px;
-  }
-
-  .content {
-    margin: 3rem auto;
-    max-width: 900px;
+  h1 {
+    color: ${({ theme }) => theme.primaryLight};
   }
 
   section {
@@ -30,6 +42,43 @@ const GlobalStyle = createGlobalStyle`
       padding: 60px 0;
     }
   }
-`
 
-export default GlobalStyle
+  a {
+    color: #2fd4cd;
+    text-shadow: none;
+    text-decoration: none;
+    background-image: none;
+  }
+
+  ul {
+    width: 100%;
+    padding-top: 15px;
+  }
+
+  .container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .intro {
+    margin-top: 300px;
+    margin-bottom: 600px;
+  }
+
+  .content {
+    margin: 3rem auto;
+    max-width: 900px;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 25px;
+  }
+  
+  .logo {
+    width: 32px;
+    height: 45px;
+    margin-bottom: 0;
+  }
+`
