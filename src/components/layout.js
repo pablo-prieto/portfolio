@@ -19,7 +19,7 @@ export default function Layout({ children }) {
         {/* Tells the entire project which classes to use */}
         <SiteMetadata />
         <GlobalStyle />
-        <div id="main" className="container">
+        <div id="main">
           <Navbar windowWidth={windowWidth}></Navbar>
           <div className="content">{children}</div>
         </div>

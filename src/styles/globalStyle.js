@@ -56,17 +56,19 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .container {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
   .intro {
-    margin-top: 300px;
-    margin-bottom: 600px;
+    // margin-top: 300px;
+    // margin-bottom: 600px;
   }
 
   .content {
     margin: 3rem auto;
+    padding-left: 50px;
+    padding-right: 50px;
     max-width: 900px;
   }
   
@@ -74,6 +76,14 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: space-between;
     padding-top: 25px;
+    @media (max-width: 1080px) {
+      padding-right: 40px;
+      padding-left: 40px;
+    }
+    @media (max-width: 768px) {
+      padding-right: 25px;
+      padding-left: 25px;
+    }
   }
   
   .logo {
