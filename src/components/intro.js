@@ -1,27 +1,49 @@
 import React from "react"
+import styled from "styled-components"
+
+const StyledDiv = styled.div`
+  .email-link {
+    border: 1px solid ${({ theme }) => theme.primaryHover};
+    border-radius: 4px;
+    padding: 0.75rem 1.75rem;
+    margin-top: 50px;
+  }
+
+  .email-link:hover {
+    background-color: rgba(47, 212, 205, 0.1);
+  }
+`
+
+const StyledH1 = styled.h1`
+  margin-bottom: 2rem;
+  margin-top: 10px;
+  font-size: clamp(40px, 8vw, 80px);
+`
+
+// const StyledH2 = styled.h2`
+//   margin-bottom: 2rem;
+// `
+
+const StyledP = styled.p`
+  max-width: 500px;
+  margin-bottom: 0;
+`
+
+const email = "prietop.pablo@gmail.com";
 
 export default function Intro() {
   return (
-    <div className="intro">
-      <h1>Hi! Something goes here!</h1>
-      <p>
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum."
-      </p>
-      <p>
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum."
-      </p>
-    </div>
+    <StyledDiv className="intro">
+      <span>Hi, my name is</span>
+      <StyledH1>Pablo Prieto</StyledH1>
+      {/* <StyledH2>Another thing here!</StyledH2> */}
+      <StyledP>
+        I'm a software engineer based in New York who specializes in front-end
+        development and loves to code.
+      </StyledP>
+      <a href={`mailto:${email}`} className="email-link">
+        Contact Me
+      </a>
+    </StyledDiv>
   )
 }

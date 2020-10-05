@@ -14,6 +14,7 @@ export const StyledMenu = styled.nav`
   right: 0;
   bottom: 0;
   outline: 0;
+  z-index: 9;
   transition: transform 0.3s ease-in-out;
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100vw)'};
   

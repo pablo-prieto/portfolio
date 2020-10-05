@@ -4,7 +4,7 @@ import useSiteMetadata from "../hooks/use-site-metadata"
 
 // import { useLocale } from "./i18n-context"
 
-export const SiteMetadata = ({ pathname }) => {
+export const SiteMetadata = ({ pathname, children }) => {
   const { title, description, siteUrl, image } = useSiteMetadata()
 
   //   const locale = useLocale()
@@ -41,6 +41,7 @@ export const SiteMetadata = ({ pathname }) => {
       <meta property="og:image:alt" content="Pablo Prieto Logo" />
       <meta property="og:image:width" content="512" />
       <meta property="og:image:height" content="512" />
+      {children}
 
       {/* <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content={twitter} /> */}

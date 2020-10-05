@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useOnClickOutside } from '../hooks/burger-menu-hook';
 import { Link } from "gatsby"
 import logo from "../../static/letterPNew3.png"
@@ -11,9 +11,9 @@ const ListLink = props => (
 )
 
 export default function Navbar(props) {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const node = useRef();
-  useOnClickOutside(node, () => setOpen(false));
+  useOnClickOutside(node, () => props.setOpen(false));
 
   return (
     <div className="row">
@@ -25,8 +25,8 @@ export default function Navbar(props) {
       <div>
         {props.windowWidth < "768" ? (
           <div ref={node}>
-            <Burger open={open} setOpen={setOpen} />
-            <Menu open={open} setOpen={setOpen} />
+            <Burger open={props.open} setOpen={props.setOpen} />
+            <Menu open={props.open} setOpen={props.setOpen} />
           </div>
         ) : (
           <ul>

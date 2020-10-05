@@ -3,6 +3,12 @@ import * as cursor from "../../static/cursor-green.png"
 
 export const GlobalStyle = createGlobalStyle`
 
+  html {
+    box-sizing: border-box;
+    width: 100%;
+    overflow-y: unset;
+  }
+
   body {
     background: ${({ theme }) => theme.primaryDark};
     color: ${({ theme }) => theme.primaryLight};
@@ -29,17 +35,24 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.primaryLight};
   }
 
+  h2 {
+    color: ${({ theme }) => theme.primaryLight};
+  }
+
+  span {
+    color: ${({ theme }) => theme.primaryHover};
+  }
+
   section {
     margin: 0 auto;
-    padding: 100px 0;
-    max-width: 1000px;
+    padding-bottom: 100px;
 
     @media (max-width: 768px) {
-      padding: 80px 0;
+      padding-bottom: 80px;
     }
 
     @media (max-width: 480px) {
-      padding: 60px 0;
+      padding-bottom: 60px;
     }
   }
 
@@ -61,21 +74,29 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .intro {
-    // margin-top: 300px;
-    // margin-bottom: 600px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-bottom: 200px;
   }
 
   .content {
-    margin: 3rem auto;
+    margin: auto;
     padding-left: 50px;
     padding-right: 50px;
-    max-width: 900px;
+    max-width: 1200px;
   }
   
   .row {
     display: flex;
     justify-content: space-between;
     padding-top: 25px;
+    padding-right: 50px;
+    padding-left: 50px;
     @media (max-width: 1080px) {
       padding-right: 40px;
       padding-left: 40px;
