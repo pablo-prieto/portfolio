@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import About from "./sections/about"
 
 const StyledDiv = styled.div`
   .email-link {
@@ -26,24 +27,28 @@ const StyledH1 = styled.h1`
 
 const StyledP = styled.p`
   max-width: 500px;
-  margin-bottom: 0;
+  margin-bottom: 40px;
 `
 
-const email = "prietop.pablo@gmail.com";
+const email = "prietop.pablo@gmail.com"
 
 export default function Intro() {
   return (
     <StyledDiv className="intro">
-      <span>Hi, my name is</span>
-      <StyledH1>Pablo Prieto</StyledH1>
-      {/* <StyledH2>Another thing here!</StyledH2> */}
-      <StyledP>
-        I'm a software engineer based in New York who specializes in front-end
-        development and loves to code.
-      </StyledP>
-      <a href={`mailto:${email}`} className="email-link">
-        Contact Me
-      </a>
+      <div style={{ width: '500px' }}>
+        <span>Hi, my name is</span>
+        <StyledH1>Pablo Prieto</StyledH1>
+        <StyledP>
+          I'm a software engineer based in New York who specializes in front-end
+          development and loves to code.
+        </StyledP>
+        <a href={`mailto:${email}`} className="email-link">
+          Contact Me
+        </a>
+      </div>
+      <div style={{ width: '600px' }}>
+        <About></About>
+      </div>
     </StyledDiv>
   )
 }

@@ -39,6 +39,10 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.primaryLight};
   }
 
+  p {
+    line-height: 26px;
+  }
+
   span {
     color: ${({ theme }) => theme.primaryHover};
   }
@@ -75,20 +79,29 @@ export const GlobalStyle = createGlobalStyle`
 
   .intro {
     display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    flex-direction: column;
-    align-items: flex-start;
+    place-items: center stretch;
+    justify-content: space-between;
     min-height: 100vh;
     padding-bottom: 200px;
+    flex-wrap: wrap;
+    // -webkit-box-pack: center;
+    // padding-top: 25vh;
+    // -webkit-box-align: center;
+    // flex-direction: column;
+    // align-items: flex-start;
   }
 
   .content {
     margin: auto;
-    padding-left: 50px;
-    padding-right: 50px;
-    max-width: 1200px;
+    padding-left: 125px;
+    padding-right: 125px;
+    max-width: 1600px;
+
+    @media (max-width: 768px) {
+      padding-right: 50px;
+      padding-left: 50px;
+      padding-top: 50px;
+    }
   }
   
   .row {
