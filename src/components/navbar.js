@@ -34,7 +34,7 @@ export default function Navbar(props) {
             {/* <ListLink to="/#about">About</ListLink> */}
             <ListLink to="/#projects">Projects</ListLink>
             <ListLink to="/#contact">Contact</ListLink>
-            <a href="/Resume.pdf" className="resume-link">
+            <a href="/PabloPrietoResume2020.pdf" className="resume-link">
               Resume
             </a>
           </ul>

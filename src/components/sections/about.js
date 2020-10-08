@@ -26,11 +26,11 @@ export default function About() {
         importance of consistency, scalability and modularity.
       </p>
       <p>
-        After graduating from city college in 2015, I was hired as a Software Developer at
-        BNY Mellon | Pershing. I am committed to exceeding the expectations and goals in a
-        project. Furthermore, having an experienced perspective on front end
-        development, my team and coworkers rely on me to bring innovative
-        solutions with the newest tech stacks.
+        After graduating from city college in 2015, I was hired as a Software
+        Developer at BNY Mellon | Pershing. I am committed to exceeding the
+        expectations and goals in a project. Furthermore, being a subject matter
+        expert in my company, my team and coworkers rely on me to bring
+        innovative solutions with the newest tech stacks.
       </p>
       <p>Here are some of the skills I've picked up along the way:</p>
     </div>

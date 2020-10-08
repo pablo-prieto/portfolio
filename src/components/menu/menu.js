@@ -24,7 +24,7 @@ const Menu = ({ open }) => {
         </span> */}
         Contact
       </a>
-      <a href="/Resume.pdf">
+      <a href="/PabloPrietoResume2020.pdf">
         {/* <span role="img" aria-label="contact">
           &#x1f4e9;
         </span> */}
