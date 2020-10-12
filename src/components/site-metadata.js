@@ -38,9 +38,9 @@ export const SiteMetadata = ({ pathname, children }) => {
       <meta property="og:locale" content="en" />
       <meta property="og:site_name" content={title} />
       <meta property="og:image" content={seo.image} />
-      <meta property="og:image:alt" content="Pablo Prieto Logo" />
+      {/* <meta property="og:image:alt" content="Pablo Prieto Logo" />
       <meta property="og:image:width" content="512" />
-      <meta property="og:image:height" content="512" />
+      <meta property="og:image:height" content="512" /> */}
       {children}
 
       {/* <meta name="twitter:card" content="summary" />

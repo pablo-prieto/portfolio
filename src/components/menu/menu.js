@@ -6,12 +6,12 @@ import { StyledMenu } from "./Menu.styled"
 const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
-      {/* <a href="/">
-        <span role="img" aria-label="about us">
+      <a href="/#about">
+        {/* <span role="img" aria-label="about us">
           &#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;
-        </span>
+        </span> */}
         About
-      </a> */}
+      </a>
       <a href="/#projects">
         {/* <span role="img" aria-label="price">
           &#x1f4b8;
@@ -24,10 +24,7 @@ const Menu = ({ open }) => {
         </span> */}
         Contact
       </a>
-      <a href="/PabloPrietoResume2020.pdf">
-        {/* <span role="img" aria-label="contact">
-          &#x1f4e9;
-        </span> */}
+      <a href="/PabloPrietoResume2020.pdf" className="link resume">
         Resume
       </a>
     </StyledMenu>

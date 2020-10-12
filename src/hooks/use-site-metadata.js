@@ -9,6 +9,7 @@ export default function useSiteMetadata() {
           description
           siteUrl
           image
+          email
         }
       }
     }

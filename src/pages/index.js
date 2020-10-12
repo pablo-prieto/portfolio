@@ -12,12 +12,12 @@ export default function Home() {
       {/* <About></About> */}
       <Projects></Projects>
       <Contact></Contact>
-      <p style={{fontSize: "10px"}}>
+      {/* <p style={{fontSize: "10px"}}>
         Icons made by{" "}
         <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
         {" "} from{" "}
         <a href="https://www.flaticon.com/" title="Flaticon">{" "}www.flaticon.com</a>
-      </p>
+      </p> */}
     </Layout>
   )
 }

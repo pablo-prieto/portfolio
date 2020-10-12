@@ -1,5 +1,5 @@
 module.exports = {
-    email: 'brittany.chiang@gmail.com',
+    email: 'prietop.pablo@gmail.com',
   
     socialMedia: [
       {
@@ -32,9 +32,10 @@ module.exports = {
     ],
   
     colors: {
-      green: '#64ffda',
-      navy: '#0a192f',
-      darkNavy: '#020c1b',
+      primaryDark: "#1F2833",
+      secondaryDark: "#2a3544",
+      primaryLight: "#DEF2F1",
+      primaryHover: "#2fd4cd",
     },
   
     srConfig: (delay = 200, viewFactor = 0.25) => ({

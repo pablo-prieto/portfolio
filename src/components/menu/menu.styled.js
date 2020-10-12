@@ -19,12 +19,13 @@ export const StyledMenu = styled.nav`
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100vw)'};
   
   @media (max-width: ${({ theme }) => theme.mobile}) {
-    width: 60%;
+    width: 65%;
   }
 
   a {
     font-size: 2rem;
-    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
     padding: 2rem 0;
     font-weight: bold;
     letter-spacing: 0.5rem;

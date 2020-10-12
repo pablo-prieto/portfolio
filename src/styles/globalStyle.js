@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components"
-import * as cursor from "../../static/cursor-green.png"
+// import * as cursor from "../../static/cursor-green.png"
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -12,7 +12,6 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.primaryDark};
     color: ${({ theme }) => theme.primaryLight};
-    cursor: url(${cursor}), auto;
     overflow-x: hidden;
 
     &.blur {
@@ -50,6 +49,7 @@ export const GlobalStyle = createGlobalStyle`
   section {
     margin: 0 auto;
     padding-bottom: 100px;
+    text-align: center;
 
     @media (max-width: 768px) {
       padding-bottom: 80px;
@@ -69,7 +69,7 @@ export const GlobalStyle = createGlobalStyle`
 
   ul {
     width: 100%;
-    padding-top: 15px;
+    padding-top: 10px;
   }
 
   .container {
@@ -77,18 +77,26 @@ export const GlobalStyle = createGlobalStyle`
     padding-right: 30px;
   }
 
-  .intro {
-    display: flex;
-    place-items: center stretch;
-    justify-content: space-between;
-    min-height: 100vh;
-    padding-bottom: 200px;
-    flex-wrap: wrap;
-    // -webkit-box-pack: center;
-    // padding-top: 25vh;
-    // -webkit-box-align: center;
-    // flex-direction: column;
-    // align-items: flex-start;
+  .link {
+    border: 1px solid ${({ theme }) => theme.primaryHover};
+    border-radius: 4px;
+  }
+
+  .link:hover {
+    background-color: rgba(47, 212, 205, 0.1);
+  }
+
+  .email{
+    padding: 0.75rem 1.75rem;
+  }
+
+  .resume {
+    padding: 0.5rem 1rem;
+
+    @media (max-width: 768px) {
+      padding: 0.5rem 0 !important;
+      width: 200px;
+    }
   }
 
   .content {
@@ -110,6 +118,7 @@ export const GlobalStyle = createGlobalStyle`
     padding-top: 25px;
     padding-right: 50px;
     padding-left: 50px;
+    font-size: 18px;
     @media (max-width: 1080px) {
       padding-right: 40px;
       padding-left: 40px;

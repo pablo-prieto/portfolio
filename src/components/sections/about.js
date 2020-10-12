@@ -1,10 +1,4 @@
 import React from "react"
-// import styled from "styled-components"
-// import { GlobalStyle } from '../styles/index';
-
-// const StyledAboutSection = styled.section`
-//   // padding-bottom: 125px;
-// `
 
 export default function About() {
   return (
@@ -30,9 +24,13 @@ export default function About() {
         Developer at BNY Mellon | Pershing. I am committed to exceeding the
         expectations and goals in a project. Furthermore, being a subject matter
         expert in my company, my team and coworkers rely on me to bring
-        innovative solutions with the newest tech stacks.
+        innovative solutions with the newest technologies to the table.
       </p>
-      <p>Here are some of the skills I've picked up along the way:</p>
+      <p>These are some of the languages, tools and frameworks I've been working with lately:</p>
+      <span>
+        JavaScript (ES6), TypeScript, HTML, CSS, Java, Angular, Gatsby, Node.js,
+        Spring
+      </span>
     </div>
   )
 }

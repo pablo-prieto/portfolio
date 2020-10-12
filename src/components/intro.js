@@ -1,18 +1,15 @@
 import React from "react"
 import styled from "styled-components"
 import About from "./sections/about"
+import useSiteMetadata from "../hooks/use-site-metadata"
 
 const StyledDiv = styled.div`
-  .email-link {
-    border: 1px solid ${({ theme }) => theme.primaryHover};
-    border-radius: 4px;
-    padding: 0.75rem 1.75rem;
-    margin-top: 50px;
-  }
-
-  .email-link:hover {
-    background-color: rgba(47, 212, 205, 0.1);
-  }
+  display: flex;
+  place-items: center stretch;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding-bottom: 200px;
+  flex-wrap: wrap;
 `
 
 const StyledH1 = styled.h1`
@@ -21,32 +18,29 @@ const StyledH1 = styled.h1`
   font-size: clamp(40px, 8vw, 80px);
 `
 
-// const StyledH2 = styled.h2`
-//   margin-bottom: 2rem;
-// `
-
 const StyledP = styled.p`
   max-width: 500px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 `
 
-const email = "prietop.pablo@gmail.com"
-
 export default function Intro() {
+  const { email } = useSiteMetadata()
+
   return (
-    <StyledDiv className="intro">
-      <div style={{ width: '500px' }}>
+    <StyledDiv>
+      <div style={{ width: "500px", flexGrow: 1 }}>
         <span>Hi, my name is</span>
         <StyledH1>Pablo Prieto</StyledH1>
         <StyledP>
           I'm a software engineer based in New York who specializes in front-end
-          development and loves to code.
+          development but loves to learn and understand every part of the tech
+          stack.
         </StyledP>
-        <a href={`mailto:${email}`} className="email-link">
+        <a href={`mailto:${email}`} className="link email">
           Contact Me
         </a>
       </div>
-      <div style={{ width: '600px' }}>
+      <div style={{ width: "600px", flexGrow: 1 }}>
         <About></About>
       </div>
     </StyledDiv>
