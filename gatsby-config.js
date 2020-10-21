@@ -4,9 +4,9 @@ module.exports = {
   siteMetadata: {
     title: 'Pablo Prieto',
     description:
-      'Pablo Prieto is a software engineer specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.',
+      'Pablo Prieto is a software engineer based in New York who specializes in front-end development but loves to learn and understand every part of the tech stack',
     siteUrl: 'https://pabloprieto.io', // No trailing slash allowed!
-    image: './static/letterP.png', // Path to your image you placed in the 'static' folder
+    image: './static/ogImage.png', // Path to your image you placed in the 'static' folder
     email: 'prietop.pablo@gmail.com'
     // twitterUsername: '@bchiang7',
   },
