@@ -1,0 +1,53 @@
+---
+import { interests } from "../../data/resume"
+import Block from "../Block.astro"
+---
+
+<Block id="interests" cmd="cat ~/.interests" label="Interests">
+  <ul class="grid">
+    {interests.map(i => (
+      <li class="card">
+        <h3>
+          <span class="ico" aria-hidden="true">
+            {i.icon}
+          </span>{" "}
+          {i.name}
+        </h3>
+        <p>{i.blurb}</p>
+      </li>
+    ))}
+  </ul>
+</Block>
+
+<style>
+  .grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    border: 1px dashed #2a3a30;
+    padding: 12px 14px;
+    border-radius: 6px;
+    transition:
+      border-color 0.2s,
+      transform 0.2s;
+  }
+  .card:hover {
+    border-color: var(--green);
+    transform: translateY(-2px);
+  }
+  h3 {
+    font: inherit;
+    color: var(--white);
+    font-weight: 600;
+  }
+  .ico {
+    color: var(--amber);
+  }
+  p {
+    color: var(--dim);
+    font-size: 13px;
+  }
+</style>

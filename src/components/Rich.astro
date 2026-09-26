@@ -1,0 +1,9 @@
+---
+// Renders copy from resume.ts, turning **phrase** into a highlighted metric.
+interface Props {
+  text: string
+}
+const parts = Astro.props.text.split(/\*\*(.+?)\*\*/g)
+---
+
+{parts.map((part, i) => (i % 2 ? <span class="metric">{part}</span> : part))}

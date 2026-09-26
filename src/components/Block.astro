@@ -1,0 +1,54 @@
+---
+// One "command + output" unit of the terminal session.
+import Prompt from "./Prompt.astro"
+
+interface Props {
+  id: string
+  cmd: string
+  /** Screen-reader heading; the prompt itself is decorative. */
+  label: string
+}
+const { id, cmd, label } = Astro.props
+---
+
+<section class="block" id={id} aria-labelledby={`${id}-h`}>
+  <h2 class="sr-only" id={`${id}-h`}>
+    {label}
+  </h2>
+  <Prompt cmd={cmd} />
+  <div class="out">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .block {
+    margin-bottom: 56px;
+    scroll-margin-top: 64px;
+  }
+  .out {
+    margin-top: 10px;
+    padding-left: 2ch;
+  }
+
+  /* With JS: blocks start hidden, then the command types out and the output fades in.
+     Without JS (or with reduced motion) everything is simply visible. */
+  :global(html.js) .block {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.5s,
+      transform 0.5s;
+  }
+  :global(html.js) .block.on {
+    opacity: 1;
+    transform: none;
+  }
+  :global(html.js) .block .out {
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  :global(html.js) .block.done .out {
+    opacity: 1;
+  }
+</style>

@@ -1,0 +1,84 @@
+---
+import "@fontsource-variable/jetbrains-mono/wght.css"
+import fontUrl from "@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url"
+import "../styles/global.css"
+import { profile } from "../data/resume"
+
+interface Props {
+  title: string
+  description: string
+}
+const { title, description } = Astro.props
+const canonical = new URL(Astro.url.pathname, Astro.site)
+// Rendered from scripts/og-card.html by `bun run og`.
+const ogImage = new URL("/og.png", Astro.site)
+const ogAlt = `${profile.name.first} ${profile.name.last} — ${profile.role}, shown as a terminal fetch command`
+
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: `${profile.name.first} ${profile.name.last}`,
+  jobTitle: profile.role,
+  url: profile.site,
+  email: `mailto:${profile.email}`,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Austin",
+    addressRegion: "TX",
+  },
+  sameAs: [`https://github.com/${profile.github}`],
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0a0c0b" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href={fontUrl}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta
+      property="og:site_name"
+      content={`${profile.name.first} ${profile.name.last}`}
+    />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogAlt} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(person)}
+      is:inline
+    />
+    <!-- Opt into the typing/reveal animations before first paint, unless motion is reduced. -->
+    <script is:inline>
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches)
+        document.documentElement.classList.add("js")
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,20 @@
+---
+import { readme } from "../../data/resume"
+import Block from "../Block.astro"
+import Rich from "../Rich.astro"
+---
+
+<Block id="readme" cmd="cat README.md" label="Summary">
+  {readme.paragraphs.map(p => (
+    <p>
+      <Rich text={p} />
+    </p>
+  ))}
+  <p class="comment"># {readme.comment}</p>
+</Block>
+
+<style>
+  p + p {
+    margin-top: 10px;
+  }
+</style>

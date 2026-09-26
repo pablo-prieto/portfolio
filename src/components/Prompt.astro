@@ -1,0 +1,32 @@
+---
+import { profile } from "../data/resume"
+
+interface Props {
+  cmd: string
+}
+---
+
+<div class="prompt">
+  <span class="u">{profile.handle}</span>@<span class="u">{profile.host}</span>{" "}
+  <span class="p">{profile.cwd}</span>
+  {" $ "}
+  <span class="cmd" data-cmd={Astro.props.cmd}>
+    {Astro.props.cmd}
+  </span>
+</div>
+
+<style>
+  .prompt {
+    color: var(--dim);
+    overflow-wrap: anywhere;
+  }
+  .u {
+    color: var(--green);
+  }
+  .p {
+    color: var(--cyan);
+  }
+  .cmd {
+    color: var(--white);
+  }
+</style>

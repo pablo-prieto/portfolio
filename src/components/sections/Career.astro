@@ -1,0 +1,93 @@
+---
+import { education, roles } from "../../data/resume"
+import Block from "../Block.astro"
+import Rich from "../Rich.astro"
+---
+
+<Block id="career" cmd="git log --career --graph" label="Experience">
+  <ol class="log">
+    {roles.map(r => (
+      <li class="entry">
+        <div class="ts">
+          {r.start} → {r.end ?? "HEAD"}
+          {r.note && <span class="comment"> ({r.note})</span>}
+        </div>
+        <h3>
+          <span class="role">{r.title}</span> @{" "}
+          <span class="org">{r.company}</span>
+        </h3>
+        <ul>
+          {r.highlights.map(h => (
+            <li>
+              <Rich text={h} />
+            </li>
+          ))}
+        </ul>
+      </li>
+    ))}
+    <li class="entry root">
+      <div class="ts">
+        {education.date} <span class="comment">(initial commit)</span>
+      </div>
+      <h3>
+        <span class="role">{education.degree}</span> @{" "}
+        <span class="org">{education.school}</span>
+      </h3>
+    </li>
+  </ol>
+</Block>
+
+<style>
+  .log {
+    list-style: none;
+  }
+  .entry {
+    border-left: 2px solid var(--line);
+    padding: 4px 0 18px 18px;
+    position: relative;
+  }
+  .entry::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 12px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--green);
+  }
+  .root {
+    border-left-color: transparent;
+    padding-bottom: 0;
+  }
+  .root::before {
+    border-color: var(--dim);
+  }
+  .ts {
+    color: var(--dim);
+    font-size: 12px;
+  }
+  h3 {
+    font: inherit;
+  }
+  .role {
+    color: var(--white);
+    font-weight: 600;
+  }
+  .org {
+    color: var(--amber);
+  }
+  ul {
+    list-style: none;
+    margin-top: 6px;
+  }
+  ul li {
+    padding-left: 2ch;
+    text-indent: -2ch;
+  }
+  ul li::before {
+    content: "› ";
+    color: var(--green);
+  }
+</style>

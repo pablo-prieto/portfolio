@@ -1,0 +1,91 @@
+---
+import { skillBars, skillGroups } from "../../data/resume"
+import Block from "../Block.astro"
+
+const CELLS = 20
+const nameWidth = `${Math.max(...skillBars.map(([n]) => n.length)) + 1}ch`
+---
+
+<Block id="skills" cmd="bun install --skills" label="Skills">
+  <div class="bars" style={`--name-w:${nameWidth}`}>
+    {skillBars.map(([name, level, comment]) => (
+      <div class="row">
+        <span class="n">{name}</span>
+        <span class="bar" aria-hidden="true">
+          {"█".repeat(level)}
+          <span class="empty">{"░".repeat(CELLS - level)}</span>
+        </span>
+        <span class="st">
+          installed{comment && <span class="comment"> # {comment}</span>}
+        </span>
+      </div>
+    ))}
+  </div>
+  <p class="ok">
+    ✓ {skillGroups.reduce((n, [, items]) => n + items.split(",").length, 0)}{" "}
+    packages in 0.31s
+  </p>
+  <dl class="deps">
+    {skillGroups.map(([group, items]) => (
+      <div>
+        <dt>{group}</dt>
+        <dd>{items}</dd>
+      </div>
+    ))}
+  </dl>
+</Block>
+
+<style>
+  .row {
+    display: flex;
+    gap: 1ch;
+    white-space: nowrap;
+  }
+  .n {
+    width: var(--name-w);
+    flex: none;
+  }
+  .bar {
+    color: var(--green);
+  }
+  .empty {
+    color: var(--line);
+  }
+  .ok {
+    margin-top: 8px;
+    color: var(--green);
+  }
+  .deps {
+    margin-top: 14px;
+    font-size: 13px;
+  }
+  .deps div {
+    display: grid;
+    grid-template-columns: 11ch 1fr;
+    gap: 1ch;
+  }
+  dt {
+    color: var(--amber);
+  }
+  dd {
+    color: var(--dim);
+  }
+  @media (max-width: 640px) {
+    .row {
+      flex-wrap: wrap;
+      row-gap: 0;
+      margin-bottom: 4px;
+    }
+    .st {
+      padding-left: calc(var(--name-w) + 1ch);
+      white-space: normal;
+      color: var(--dim);
+      font-size: 13px;
+    }
+    .deps div {
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-bottom: 6px;
+    }
+  }
+</style>

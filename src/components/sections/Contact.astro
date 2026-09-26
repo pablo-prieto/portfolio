@@ -1,0 +1,53 @@
+---
+import { profile } from "../../data/resume"
+import Block from "../Block.astro"
+import Prompt from "../Prompt.astro"
+---
+
+<Block id="contact" cmd="./contact.sh" label="Contact">
+  <ul class="links">
+    <li>
+      → email&nbsp;&nbsp;<a href={`mailto:${profile.email}`}>{profile.email}</a>
+    </li>
+    <li>
+      → github&nbsp;
+      <a href={`https://github.com/${profile.github}`} rel="me noopener">
+        github.com/{profile.github}
+      </a>
+    </li>
+  </ul>
+  <div class="idle">
+    <Prompt cmd="" />
+    <span class="caret" aria-hidden="true"></span>
+  </div>
+</Block>
+
+<style>
+  .links {
+    list-style: none;
+  }
+  .idle {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+  }
+  .caret {
+    display: inline-block;
+    width: 0.6em;
+    height: 1.1em;
+    background: var(--green);
+    box-shadow: var(--glow);
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .caret {
+      animation: none;
+    }
+  }
+</style>
