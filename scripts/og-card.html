@@ -1,0 +1,295 @@
+<!doctype html>
+<!-- Share-preview card (1200×630). Regenerate public/og.png with `bun run og` after editing.
+     Coin symbols are copied from src/components/CoinNetwork.astro. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: "JetBrains Mono";
+        src: url("../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2")
+          format("woff2");
+        font-weight: 100 800;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+      body {
+        background: #0a0c0b;
+        color: #c9d1c8;
+        font:
+          24px/1.5 "JetBrains Mono",
+          monospace;
+        position: relative;
+      }
+      body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          repeating-linear-gradient(
+            to bottom,
+            rgb(255 255 255 / 0.025) 0 1px,
+            transparent 1px 3px
+          ),
+          radial-gradient(
+            ellipse at center,
+            transparent 55%,
+            rgb(0 0 0 / 0.55) 100%
+          );
+      }
+      .bg {
+        position: absolute;
+        inset: 0;
+        color: #7cf29a;
+        opacity: 0.16;
+      }
+      .bg line {
+        stroke: currentColor;
+        stroke-width: 1.2;
+        stroke-dasharray: 2 6;
+      }
+      .bg .amber {
+        color: #ffb454;
+      }
+      .window {
+        position: absolute;
+        left: 90px;
+        top: 80px;
+        width: 1020px;
+        height: 470px;
+        border: 1px solid #1f2a23;
+        border-radius: 14px;
+        background: rgb(10 12 11 / 0.9);
+        box-shadow: 0 30px 80px rgb(0 0 0 / 0.6);
+        overflow: hidden;
+      }
+      .bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 22px;
+        background: #101412;
+        border-bottom: 1px solid #1f2a23;
+        font-size: 17px;
+        color: #5d6b62;
+      }
+      .bar i {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #ff5f57;
+      }
+      .bar i:nth-child(2) {
+        background: #febc2e;
+      }
+      .bar i:nth-child(3) {
+        background: #28c840;
+      }
+      .bar span {
+        flex: 1;
+        text-align: center;
+        margin-right: 62px;
+      }
+      .body {
+        padding: 38px 48px;
+      }
+      .prompt {
+        color: #5d6b62;
+      }
+      .prompt .g {
+        color: #7cf29a;
+      }
+      .prompt .c {
+        color: #6ee7f0;
+      }
+      .prompt .w {
+        color: #fff;
+      }
+      .hero {
+        display: flex;
+        gap: 44px;
+        align-items: center;
+        margin-top: 26px;
+      }
+      pre {
+        font: inherit;
+        font-size: 17px;
+        line-height: 1.15;
+        color: #7cf29a;
+        text-shadow: 0 0 14px rgb(124 242 154 / 0.4);
+      }
+      h1 {
+        font-size: 72px;
+        font-weight: 800;
+        letter-spacing: -2px;
+        line-height: 1.05;
+        color: #fff;
+      }
+      h1 span {
+        color: #7cf29a;
+        text-shadow: 0 0 20px rgb(124 242 154 / 0.4);
+      }
+      .kv {
+        margin-top: 12px;
+        font-size: 22px;
+        white-space: nowrap;
+      }
+      .kv b {
+        color: #ffb454;
+        font-weight: 400;
+      }
+      .foot {
+        position: absolute;
+        left: 48px;
+        right: 48px;
+        bottom: 30px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 21px;
+        color: #5d6b62;
+      }
+      .foot .url {
+        color: #6ee7f0;
+      }
+      .caret {
+        display: inline-block;
+        width: 13px;
+        height: 26px;
+        background: #7cf29a;
+        vertical-align: -4px;
+        margin-left: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <svg class="bg" viewBox="0 0 1200 630">
+      <defs>
+        <symbol id="c-btc" viewBox="0 0 32 32">
+          <g fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="16" cy="16" r="14.5" fill="#0a0c0b"></circle>
+            <path
+              transform="rotate(14 16 16)"
+              stroke-width="2"
+              d="M12 9v13 M12 9h5.6a3.2 3.2 0 0 1 0 6.4H12 M12 15.4h6.4a3.3 3.3 0 0 1 0 6.6H12 M14 7v2 M17 7v2 M14 22v2.2 M17 22v2.2"
+            ></path>
+          </g>
+        </symbol>
+        <symbol id="c-eth" viewBox="0 0 32 32">
+          <g fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="16" cy="16" r="14.5" fill="#0a0c0b"></circle>
+            <path
+              stroke-width="1.8"
+              stroke-linejoin="round"
+              d="M16 5 23 16.3 16 20.4 9 16.3Z M16 22 23 17.9 16 27 9 17.9Z"
+            ></path>
+          </g>
+        </symbol>
+        <symbol id="c-sol" viewBox="0 0 32 32">
+          <g fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="16" cy="16" r="14.5" fill="#0a0c0b"></circle>
+            <path
+              fill="currentColor"
+              stroke="none"
+              d="M11 10h13l-3 3H8z M8 14.5h13l3 3H11z M11 19h13l-3 3H8z"
+            ></path>
+          </g>
+        </symbol>
+        <symbol id="c-usd" viewBox="0 0 32 32">
+          <g fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="16" cy="16" r="14.5" fill="#0a0c0b"></circle>
+            <circle
+              cx="16"
+              cy="16"
+              r="10.5"
+              stroke-width=".8"
+              stroke-dasharray="2 2"
+            ></circle>
+            <path
+              stroke-width="2"
+              d="M19.6 12.2c-.9-1.4-5.8-1.8-6.4.6-.7 2.6 6.6 2.1 6.2 5.2-.4 2.6-5.6 2.4-6.8.8 M16 9v14"
+            ></path>
+          </g>
+        </symbol>
+        <symbol id="c-doge" viewBox="0 0 32 32">
+          <g fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="16" cy="16" r="14.5" fill="#0a0c0b"></circle>
+            <path
+              stroke-width="2"
+              d="M13 9.5h3.5a6.5 6.5 0 0 1 0 13H13Z M10.5 16h6"
+            ></path>
+          </g>
+        </symbol>
+      </defs>
+      <line x1="80" y1="60" x2="330" y2="30" />
+      <line x1="330" y1="30" x2="600" y2="50" />
+      <line x1="600" y1="50" x2="880" y2="28" />
+      <line x1="880" y1="28" x2="1130" y2="70" />
+      <line x1="80" y1="60" x2="40" y2="320" />
+      <line x1="40" y1="320" x2="60" y2="580" />
+      <line x1="1130" y1="70" x2="1165" y2="330" />
+      <line x1="1165" y1="330" x2="1140" y2="590" />
+      <line x1="60" y1="580" x2="400" y2="605" />
+      <line x1="400" y1="605" x2="780" y2="598" />
+      <line x1="780" y1="598" x2="1140" y2="590" />
+      <use href="#c-btc" class="amber" x="60" y="40" width="40" height="40" />
+      <use href="#c-eth" x="312" y="12" width="36" height="36" />
+      <use href="#c-usd" x="584" y="34" width="32" height="32" />
+      <use href="#c-sol" x="862" y="10" width="36" height="36" />
+      <use href="#c-doge" x="1112" y="52" width="36" height="36" />
+      <use href="#c-eth" x="22" y="302" width="36" height="36" />
+      <use
+        href="#c-btc"
+        class="amber"
+        x="1145"
+        y="310"
+        width="40"
+        height="40"
+      />
+      <use href="#c-sol" x="42" y="562" width="36" height="36" />
+      <use href="#c-usd" x="384" y="589" width="32" height="32" />
+      <use href="#c-doge" x="762" y="580" width="36" height="36" />
+      <use href="#c-eth" x="1122" y="572" width="36" height="36" />
+    </svg>
+
+    <div class="window">
+      <div class="bar">
+        <i></i><i></i><i></i><span>pablo@austin: ~/portfolio — zsh</span>
+      </div>
+      <div class="body">
+        <div class="prompt">
+          <span class="g">pablo</span>@<span class="g">austin</span>
+          <span class="c">~/portfolio</span> $ <span class="w">fetch --me</span>
+        </div>
+        <div class="hero">
+          <pre>
+ ██████╗ ██████╗
+ ██╔══██╗██╔══██╗
+ ██████╔╝██████╔╝
+ ██╔═══╝ ██╔═══╝
+ ██║     ██║
+ ╚═╝     ╚═╝</pre>
+          <div>
+            <h1>Pablo <span>Prieto</span></h1>
+            <div class="kv"><b>role</b> Full-Stack AI Engineer</div>
+            <div class="kv">
+              <b>domain</b> crypto · derivatives · prediction markets
+            </div>
+          </div>
+        </div>
+        <div class="foot">
+          <span class="url">pabloprieto.io</span
+          ><span>10 years shipping fintech<span class="caret"></span></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

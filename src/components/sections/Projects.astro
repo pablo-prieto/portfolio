@@ -1,0 +1,62 @@
+---
+import { projects } from "../../data/resume"
+import Block from "../Block.astro"
+---
+
+<Block id="projects" cmd="ls -la ./projects" label="Projects">
+  <table class="ls">
+    <tbody>
+      {projects.map(p => (
+        <tr>
+          <td class="perm">{p.kind === "dir" ? "drwxr-xr-x" : "-rwxr-xr-x"}</td>
+          <td class:list={["name", p.kind]}>
+            {p.href ? (
+              <a href={p.href} rel="noopener">
+                {p.name}
+              </a>
+            ) : (
+              p.name
+            )}
+            {p.kind === "dir" ? "/" : "*"}
+          </td>
+          <td>{p.summary}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</Block>
+
+<style>
+  .ls {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  td {
+    padding: 3px 12px 3px 0;
+    vertical-align: top;
+  }
+  .perm {
+    color: var(--dim);
+    white-space: nowrap;
+  }
+  .name {
+    color: var(--cyan);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .name a {
+    color: inherit;
+  }
+  .exec {
+    color: var(--green);
+  }
+  @media (max-width: 640px) {
+    .perm {
+      display: none;
+    }
+    tr {
+      display: grid;
+      padding-bottom: 8px;
+    }
+  }
+</style>

@@ -1,0 +1,190 @@
+---
+// Background: coins as nodes of a faint network, with small "blocks" travelling along some edges.
+// Pure SVG + CSS animation; no JavaScript.
+
+type Coin = "btc" | "eth" | "sol" | "usd" | "doge"
+
+// [coin, x, y] in a 1440×960 viewBox (sliced to cover any viewport).
+const nodes: ReadonlyArray<readonly [Coin, number, number]> = [
+  ["btc", 120, 140],
+  ["eth", 420, 90],
+  ["sol", 760, 180],
+  ["usd", 1080, 110],
+  ["doge", 1320, 220],
+  ["eth", 220, 460],
+  ["btc", 600, 400],
+  ["sol", 940, 480],
+  ["usd", 1240, 520],
+  ["doge", 90, 760],
+  ["sol", 420, 720],
+  ["eth", 780, 800],
+  ["btc", 1120, 760],
+  ["usd", 1380, 860],
+]
+
+const edges: ReadonlyArray<readonly [number, number]> = [
+  [0, 1],
+  [1, 2],
+  [2, 3],
+  [3, 4],
+  [0, 5],
+  [1, 6],
+  [2, 6],
+  [2, 7],
+  [3, 8],
+  [4, 8],
+  [5, 6],
+  [6, 7],
+  [7, 8],
+  [5, 9],
+  [5, 10],
+  [6, 10],
+  [6, 11],
+  [7, 11],
+  [7, 12],
+  [8, 12],
+  [8, 13],
+  [9, 10],
+  [10, 11],
+  [11, 12],
+  [12, 13],
+]
+
+const line = ([a, b]: readonly [number, number]) => {
+  const [, x1, y1] = nodes[a]!
+  const [, x2, y2] = nodes[b]!
+  return { x1, y1, x2, y2 }
+}
+
+// Every third edge carries a pulse; staggered so only one or two are moving at once.
+const pulses = edges.filter((_, i) => i % 3 === 0)
+const SIZE = 36
+---
+
+<div class="bg" aria-hidden="true">
+  <svg viewBox="0 0 1440 960" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <!--
+        Styling lives in presentation attributes, not CSS: document stylesheets don't reliably
+        reach the copies that <use> renders, so CSS-only styling leaves the coins as black discs.
+        The face fill matches --bg so network lines passing behind a coin are hidden.
+      -->
+      <symbol id="c-btc" viewBox="0 0 32 32">
+        <g fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="16" cy="16" r="14.5" fill="#0a0c0b"></circle>
+          <path
+            transform="rotate(14 16 16)"
+            stroke-width="2"
+            d="M12 9v13 M12 9h5.6a3.2 3.2 0 0 1 0 6.4H12 M12 15.4h6.4a3.3 3.3 0 0 1 0 6.6H12 M14 7v2 M17 7v2 M14 22v2.2 M17 22v2.2"
+          ></path>
+        </g>
+      </symbol>
+      <symbol id="c-eth" viewBox="0 0 32 32">
+        <g fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="16" cy="16" r="14.5" fill="#0a0c0b"></circle>
+          <path
+            stroke-width="1.8"
+            stroke-linejoin="round"
+            d="M16 5 23 16.3 16 20.4 9 16.3Z M16 22 23 17.9 16 27 9 17.9Z"
+          ></path>
+        </g>
+      </symbol>
+      <symbol id="c-sol" viewBox="0 0 32 32">
+        <g fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="16" cy="16" r="14.5" fill="#0a0c0b"></circle>
+          <path
+            fill="currentColor"
+            stroke="none"
+            d="M11 10h13l-3 3H8z M8 14.5h13l3 3H11z M11 19h13l-3 3H8z"
+          ></path>
+        </g>
+      </symbol>
+      <symbol id="c-usd" viewBox="0 0 32 32">
+        <g fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="16" cy="16" r="14.5" fill="#0a0c0b"></circle>
+          <circle
+            cx="16"
+            cy="16"
+            r="10.5"
+            stroke-width=".8"
+            stroke-dasharray="2 2"
+          ></circle>
+          <path
+            stroke-width="2"
+            d="M19.6 12.2c-.9-1.4-5.8-1.8-6.4.6-.7 2.6 6.6 2.1 6.2 5.2-.4 2.6-5.6 2.4-6.8.8 M16 9v14"
+          ></path>
+        </g>
+      </symbol>
+      <symbol id="c-doge" viewBox="0 0 32 32">
+        <g fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="16" cy="16" r="14.5" fill="#0a0c0b"></circle>
+          <path
+            stroke-width="2"
+            d="M13 9.5h3.5a6.5 6.5 0 0 1 0 13H13Z M10.5 16h6"
+          ></path>
+        </g>
+      </symbol>
+    </defs>
+
+    <g class="edges">
+      {edges.map(e => (
+        <line {...line(e)} />
+      ))}
+    </g>
+    <g class="pulses">
+      {pulses.map((e, i) => (
+        <line {...line(e)} style={`animation-delay:${(i * 1.7).toFixed(1)}s`} />
+      ))}
+    </g>
+    {nodes.map(([coin, x, y]) => (
+      <use
+        href={`#c-${coin}`}
+        x={x - SIZE / 2}
+        y={y - SIZE / 2}
+        width={SIZE}
+        height={SIZE}
+        class:list={{ amber: coin === "btc" }}
+      />
+    ))}
+  </svg>
+</div>
+
+<style>
+  .bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    color: var(--green);
+    opacity: 0.11;
+  }
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  .amber {
+    color: var(--amber);
+  }
+  .edges line {
+    stroke: currentColor;
+    stroke-width: 1;
+    stroke-dasharray: 2 5;
+  }
+  .pulses line {
+    stroke: var(--green);
+    stroke-width: 2;
+    stroke-dasharray: 10 2000;
+    stroke-dashoffset: 10;
+    animation: travel 6s linear infinite;
+  }
+  @keyframes travel {
+    to {
+      stroke-dashoffset: -700;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pulses {
+      display: none;
+    }
+  }
+</style>

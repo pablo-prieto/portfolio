@@ -1,0 +1,96 @@
+---
+import { fetch, profile } from "../../data/resume"
+import Block from "../Block.astro"
+
+const ascii = String.raw`
+ ██████╗ ██████╗
+ ██╔══██╗██╔══██╗
+ ██████╔╝██████╔╝
+ ██╔═══╝ ██╔═══╝
+ ██║     ██║
+ ╚═╝     ╚═╝`
+const swatches = ["--red", "--amber", "--green", "--cyan", "--violet", "--fg"]
+---
+
+<Block id="whoami" cmd="fetch --me" label="About Pablo Prieto">
+  <div class="fetch">
+    <pre class="ascii" aria-hidden="true">{ascii}</pre>
+    <div class="kv">
+      <h1 class="name">
+        {profile.name.first} <span>{profile.name.last}</span>
+      </h1>
+      <dl>
+        {fetch.map(([k, v]) => (
+          <div>
+            <dt>{k}</dt>
+            <dd>{v}</dd>
+          </div>
+        ))}
+      </dl>
+      <div class="swatches" aria-hidden="true">
+        {swatches.map(s => (
+          <i style={`background:var(${s})`} />
+        ))}
+      </div>
+    </div>
+  </div>
+</Block>
+
+<style>
+  .fetch {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .ascii {
+    color: var(--green);
+    text-shadow: var(--glow);
+    font: inherit;
+    font-size: 11px;
+    line-height: 1.15;
+  }
+  .kv {
+    min-width: 0;
+  }
+  .name {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .name span {
+    color: var(--green);
+    text-shadow: var(--glow);
+  }
+  dl div {
+    display: flex;
+    gap: 1ch;
+  }
+  dt {
+    color: var(--amber);
+    flex: none;
+  }
+  dd {
+    min-width: 0;
+  }
+  .swatches {
+    display: flex;
+    margin-top: 10px;
+  }
+  .swatches i {
+    width: 22px;
+    height: 12px;
+  }
+  @media (max-width: 640px) {
+    .fetch {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .name {
+      font-size: 32px;
+    }
+  }
+</style>

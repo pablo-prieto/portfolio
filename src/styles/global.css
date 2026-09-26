@@ -1,0 +1,104 @@
+:root {
+  --bg: #0a0c0b;
+  --bg-2: #101412;
+  --line: #1f2a23;
+  --fg: #c9d1c8;
+  --dim: #5d6b62;
+  --white: #fff;
+  --green: #7cf29a;
+  --amber: #ffb454;
+  --red: #ff6b6b;
+  --cyan: #6ee7f0;
+  --violet: #9d8cff;
+  --glow: 0 0 12px rgb(124 242 154 / 0.35);
+  --font:
+    "JetBrains Mono Variable", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.7 var(--font);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* CRT scanlines + vignette. Fixed layers, so scrolling never repaints them. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+body::before {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgb(255 255 255 / 0.025) 0 1px,
+    transparent 1px 3px
+  );
+}
+body::after {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgb(0 0 0 / 0.6) 100%
+  );
+}
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+}
+a:hover,
+a:focus-visible {
+  color: var(--green);
+}
+:focus-visible {
+  outline: 1px solid var(--green);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--green);
+  color: var(--bg);
+}
+
+.metric {
+  color: var(--green);
+}
+.comment {
+  color: var(--dim);
+  font-style: italic;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

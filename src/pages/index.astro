@@ -1,0 +1,33 @@
+---
+import CoinNetwork from "../components/CoinNetwork.astro"
+import Terminal from "../components/Terminal.astro"
+import Career from "../components/sections/Career.astro"
+import Contact from "../components/sections/Contact.astro"
+import Fetch from "../components/sections/Fetch.astro"
+import Interests from "../components/sections/Interests.astro"
+import Projects from "../components/sections/Projects.astro"
+import Readme from "../components/sections/Readme.astro"
+import Skills from "../components/sections/Skills.astro"
+import Base from "../layouts/Base.astro"
+import { profile } from "../data/resume"
+---
+
+<Base
+  title={`${profile.name.first} ${profile.name.last} — ${profile.role}`}
+  description="Full-stack AI engineer with 10 years building institutional financial data platforms: crypto, derivatives and prediction markets. Austin, TX."
+>
+  <CoinNetwork />
+  <Terminal>
+    <Fetch />
+    <Readme />
+    <Career />
+    <Projects />
+    <Skills />
+    <Interests />
+    <Contact />
+  </Terminal>
+</Base>
+
+<script>
+  import "../scripts/terminal"
+</script>
